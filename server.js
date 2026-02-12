@@ -2,18 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import { UserController } from './UserController.js';
 
-// --- CORREÇÃO MÁGICA DO IPV6 ---
-// Isso obriga o servidor a usar o endereço IPv4 antigo, que funciona no Render
-import dns from 'node:dns';
-try {
-    if (dns.setDefaultResultOrder) {
-        dns.setDefaultResultOrder('ipv4first');
-    }
-} catch (e) {
-    console.log("Aviso: Node antigo, pulando ajuste de DNS.");
-}
-// -------------------------------
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
